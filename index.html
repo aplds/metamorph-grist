@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metamorph</title>
+<link rel="stylesheet" href="metamorph.css">
+<script src="vendor/fflate.min.js"></script>
+<script defer src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+</head>
+<body>
+<div id="appEl">
+  <div id="barEl">
+    <div class="mm-brand">
+      <span class="mm-blob is-small"></span>
+      <span class="mm-name">Metamorph</span>
+    </div>
+    <div class="mm-pill" id="pillEl" title="Open the Metamorph panel">
+      <span class="mm-dot is-off" id="dotEl"></span>
+      <span class="mm-src" id="pillSrcEl">no site loaded</span>
+      <span class="mm-meta" id="pillMetaEl"></span>
+    </div>
+    <button class="mm-btn is-icon" id="backBtn" hidden title="Back to the start page">↩</button>
+    <button class="mm-btn is-icon" id="zoomOutBtn" title="Zoom out">−</button>
+    <button class="mm-btn is-icon" id="zoomLabelEl" title="Reset zoom">100%</button>
+    <button class="mm-btn is-icon" id="zoomInBtn" title="Zoom in">+</button>
+    <button class="mm-btn is-icon" id="reloadBtn" title="Reload the site">⟳</button>
+    <button class="mm-btn is-icon" id="panelBtn" title="Metamorph panel">☰</button>
+  </div>
+
+  <div id="stageEl">
+    <div id="viewEl"><iframe id="siteEl" hidden title="Metamorph site" allow="fullscreen; clipboard-write"></iframe></div>
+    <button id="hotEl" hidden title="Metamorph — show the bar (Ctrl/Cmd+Shift+M)"></button>
+
+    <div id="startEl">
+      <span class="mm-blob"></span>
+      <div class="mm-title">Metamorph</div>
+      <div class="mm-sub">Drop a website <code>.zip</code> (or a single <code>.html</code>) here and it becomes this widget — no hosting, no server. HTML, CSS, modules, images and data files are unpacked and served from your browser.</div>
+      <div id="dropEl">
+        <div class="mm-row">
+          <button class="mm-btn is-primary" id="browseBtn">Choose a file…</button>
+          <button class="mm-btn" id="demoBtn">Try the demo</button>
+        </div>
+        <div class="mm-row">
+          <input class="mm-input" id="urlInput" type="url" placeholder="or paste a https:// link to a .zip" />
+          <button class="mm-btn" id="loadUrlBtn">Load</button>
+        </div>
+        <div class="mm-hint">In Grist: map an <b>Attachment</b> column to follow the selected row — or store the site in the widget's options (☰ → <i>Store this site in the document</i>) so it lives inside the document itself and travels with it.</div>
+      </div>
+      <input type="file" id="fileInput" accept=".zip,.html,.htm,application/zip,application/x-zip-compressed,text/html" hidden />
+    </div>
+
+    <div id="busyEl" hidden>
+      <span class="mm-blob is-busy"></span>
+      <div class="mm-title">Metamorphing…</div>
+      <div class="mm-sub" id="busyTextEl">unpacking…</div>
+    </div>
+
+    <div id="errEl" hidden>
+      <div class="mm-card">
+        <div class="mm-title">Couldn't become that site</div>
+        <div class="mm-err-msg" id="errMsgEl"></div>
+        <div class="mm-row" style="margin-top:12px">
+          <button class="mm-btn is-primary" id="errRetryBtn">Try again</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="panelEl" hidden>
+      <div id="panelHeadEl">
+        <span class="mm-blob is-small"></span>
+        <b>Metamorph</b>
+        <span class="mm-spacer"></span>
+        <button class="mm-btn" id="panelCloseBtn">Close</button>
+      </div>
+      <div id="panelBodyEl"></div>
+    </div>
+
+    <div id="toastEl"></div>
+  </div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
