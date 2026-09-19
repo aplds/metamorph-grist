@@ -16,24 +16,6 @@ document* below.
 
 ---
 
-## Deploying to GitHub Pages
-
-The easiest way: open the generator's live preview and press **⬇ widget .zip** in the top bar. That
-button re-reads every file in `src/` and hands you a ready-to-deploy archive. Or zip the folder
-yourself:
-
-1. Create a repo, e.g. `metamorph`.
-2. Put the **contents** of this folder at the repo root (so `index.html` is at the root, not
-   `src/index.html`).
-3. Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`.
-4. Your widget URL is `https://<user>.github.io/metamorph/`.
-
-There is no build step, no bundler, no npm — `index.html` is the whole app. Every path inside the
-widget is relative, so it works from a subdirectory as well as from a domain root.
-
-> If you add or remove a file in this folder, update the `SRC_FILES` list at the top of the
-> generator's `index.html` (the dev harness) so the *⬇ widget .zip* button keeps shipping everything.
-
 ## Using it in Grist
 
 1. Add a widget → **Custom** → *Custom widget URL* → paste your GitHub Pages URL.
